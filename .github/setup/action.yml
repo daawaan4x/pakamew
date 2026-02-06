@@ -1,0 +1,13 @@
+name: Setup
+description: "Setup repository"
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@master
+      with:
+        version: 10
+        run_install: true
+        cache: true
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 22

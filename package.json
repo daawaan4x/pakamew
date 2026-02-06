@@ -15,7 +15,7 @@
 		"*": [
 			"pnpm prettier:write"
 		],
-		".{ts,tsx,cts,mts,d.ts,d.cts,d.mts}": [
+		"*.{ts,tsx,cts,mts,d.ts,d.cts,d.mts}": [
 			"pnpm eslint",
 			"pnpm tscheck"
 		]

@@ -6,7 +6,8 @@
 		"eslint": "eslint ./src",
 		"eslint:fix": "eslint ./src --fix",
 		"prettier": "prettier --check .",
-		"prettier:write": "prettier --write ."
+		"prettier:write": "prettier --write .",
+		"tscheck": "tsc -b --noEmit"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.1",

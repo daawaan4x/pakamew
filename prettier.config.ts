@@ -1,8 +1,6 @@
-/** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
-/** @typedef  {import("prettier").Config} PrettierConfig*/
+import type { Config } from "prettier";
 
-/** @type { PrettierConfig | SortImportsConfig } */
-const config = {
+export default {
 	arrowParens: "always",
 	bracketSameLine: true,
 	bracketSpacing: true,
@@ -19,7 +17,5 @@ const config = {
 	vueIndentScriptAndStyle: true,
 	tabWidth: 2,
 	singleQuote: false,
-	plugins: [require.resolve("@ianvs/prettier-plugin-sort-imports"), "prettier-plugin-tailwindcss"],
-};
-
-module.exports = config;
+	plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+} satisfies Config;

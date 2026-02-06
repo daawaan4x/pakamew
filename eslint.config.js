@@ -1,10 +1,11 @@
 import js from "@eslint/js";
-import reactX from "eslint-plugin-react-x";
+import prettiereslint from "eslint-config-prettier/flat";
 import reactDom from "eslint-plugin-react-dom";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
+import reactX from "eslint-plugin-react-x";
 import { defineConfig, globalIgnores } from "eslint/config";
+import tseslint from "typescript-eslint";
 
 export default defineConfig(globalIgnores(["dist"]), {
   files: ["**/*.{ts,tsx}"],
@@ -16,6 +17,7 @@ export default defineConfig(globalIgnores(["dist"]), {
     reactDom.configs.recommended,
     reactHooks.configs.flat.recommended,
     reactRefresh.configs.vite,
+    prettiereslint,
   ],
   languageOptions: {
     ecmaVersion: 2020,

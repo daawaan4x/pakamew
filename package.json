@@ -3,8 +3,8 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
-		"eslint": "eslint ./src",
-		"eslint:fix": "eslint ./src --fix",
+		"eslint": "eslint .",
+		"eslint:fix": "eslint . --fix",
 		"prettier": "prettier --check .",
 		"prettier:write": "prettier --write .",
 		"tscheck": "tsc -b --noEmit",

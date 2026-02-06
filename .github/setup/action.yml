@@ -3,13 +3,12 @@ description: "Setup repository"
 runs:
   using: composite
   steps:
-    - uses: pnpm/action-setup@v4
+    - uses: pnpm/action-setup@master
       with:
         version: 10
         cache: true
     - uses: actions/setup-node@v6
       with:
-        version: 22
-        cache: "pnpm"
+        node-version: 22
     - run: pnpm ci
       shell: bash

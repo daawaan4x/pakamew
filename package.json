@@ -7,9 +7,22 @@
 		"eslint:fix": "eslint ./src --fix",
 		"prettier": "prettier --check .",
 		"prettier:write": "prettier --write .",
-		"tscheck": "tsc -b --noEmit"
+		"tscheck": "tsc -b --noEmit",
+		"commitlint": "commitlint --edit",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*": [
+			"pnpm prettier:write"
+		],
+		".{ts,tsx,cts,mts,d.ts,d.cts,d.mts}": [
+			"pnpm eslint",
+			"pnpm tscheck"
+		]
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^20.4.1",
+		"@commitlint/config-conventional": "^20.4.1",
 		"@eslint/js": "^9.39.1",
 		"@types/node": "^24.10.1",
 		"eslint": "^9.39.1",
@@ -23,7 +36,9 @@
 		"typescript-eslint": "^8.46.4",
 		"@ianvs/prettier-plugin-sort-imports": "^4.7.1",
 		"prettier": "^3.8.1",
-		"prettier-plugin-tailwindcss": "^0.7.2"
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7"
 	},
 	"pnpm": {
 		"overrides": {

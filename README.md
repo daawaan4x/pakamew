@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Pakamew
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Development
 
-Currently, two official plugins are available:
+Environment:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Preferred Runtime: `NodeJS v22`
+- Preferred Package Manager: `pnpm v10`
 
-## React Compiler
+After cloning the repository, run the following commands to initialize the repo.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-	globalIgnores(["dist"]),
-	{
-		files: ["**/*.{ts,tsx}"],
-		extends: [
-			// Other configs...
-
-			// Remove tseslint.configs.recommended and replace with this
-			tseslint.configs.recommendedTypeChecked,
-			// Alternatively, use this for stricter rules
-			tseslint.configs.strictTypeChecked,
-			// Optionally, add this for stylistic rules
-			tseslint.configs.stylisticTypeChecked,
-
-			// Other configs...
-		],
-		languageOptions: {
-			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-				tsconfigRootDir: import.meta.dirname,
-			},
-			// other options...
-		},
-	},
-]);
+```bash
+pnpm install		# install project dependencies and prepares git hooks
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The following is a list of the primary scripts for the project.
 
-```js
-// eslint.config.js
-import reactDom from "eslint-plugin-react-dom";
-import reactX from "eslint-plugin-react-x";
+```bash
+# Global Scripts
+pnpm run eslint				# lint codebase with ESLint
+pnpm run eslint:fix			# fix lint errors with ESLint
+pnpm run prettier			# check codebase formatting with Prettier
+pnpm run prettier:write		# format codebase with Prettier
+pnpm run tscheck			# typecheck codebase with Typescript
 
-export default defineConfig([
-	globalIgnores(["dist"]),
-	{
-		files: ["**/*.{ts,tsx}"],
-		extends: [
-			// Other configs...
-			// Enable lint rules for React
-			reactX.configs["recommended-typescript"],
-			// Enable lint rules for React DOM
-			reactDom.configs.recommended,
-		],
-		languageOptions: {
-			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-				tsconfigRootDir: import.meta.dirname,
-			},
-			// other options...
-		},
-	},
-]);
+# Web App
+cd ./web
+pnpm run dev		# start development server
+pnpm run build		# build web app
+pnpm run preview	# preview web for prod
 ```
+
+## Tooling
+
+This project uses the following tools to enforce consistent coding conventions, formatting, and automated workflows:
+
+### Formatting & Linting
+
+- [Prettier](https://prettier.io/): Enforces consistent code formatting.
+- [ESLint](https://eslint.org/): Enforces best practices on coding conventions.
+- [Typescript](http://typescriptlang.org/): Provides static typing and checks.
+- [CommitLint](https://commitlint.js.org/): Standardizes commit messages based on [Conventional Commits](https://www.conventionalcommits.org/).
+
+### Automation
+
+- [Github Actions](https://github.com/features/actions): Automates CI workflows, including formatting, linting, & typechecking.
+
+## Contributors
+
+In alphabetical order:
+
+- [Geila Rigayen](https://github.com/geilala) (**@geilala**)
+- [Janille Maeh Benito](https://github.com/LoisDub) (**@LoisDub**)
+- [Lois Concepcion](https://github.com/LoisDub) (**@LoisDub**)
+- [Theone Eclarin](https://github.com/daawaan4x) (**@daawaan4x**)

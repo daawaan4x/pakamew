@@ -5,7 +5,6 @@
 	"scripts": {
 		"dev:server": "pnpm --filter @pakamew/server run dev",
 		"dev:web": "pnpm --filter @pakamew/web run dev",
-		"dev": "pnpm -r --parallel --filter @pakamew/server --filter @pakamew/web run dev",
 		"eslint": "eslint .",
 		"eslint:fix": "eslint . --fix",
 		"prettier": "prettier --check .",

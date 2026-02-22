@@ -21,7 +21,8 @@ pnpm run eslint				# lint codebase with ESLint
 pnpm run eslint:fix			# fix lint errors with ESLint
 pnpm run prettier			# check codebase formatting with Prettier
 pnpm run prettier:write		# format codebase with Prettier
-pnpm run tscheck			# typecheck codebase with Typescript
+pnpm run tsc:check			# typecheck codebase with Typescript
+pnpm run tsgo:check			# typecheck codebase with experimental Typescript (Go)
 
 # Web App
 cd ./web

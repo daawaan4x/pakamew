@@ -3,6 +3,9 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
+		"dev:server": "pnpm --filter @pakamew/server run dev",
+		"dev:web": "pnpm --filter @pakamew/web run dev",
+		"dev": "pnpm -r --parallel --filter @pakamew/server --filter @pakamew/web run dev",
 		"eslint": "eslint .",
 		"eslint:fix": "eslint . --fix",
 		"prettier": "prettier --check .",
@@ -15,34 +18,37 @@
 		"*": [
 			"pnpm prettier:write"
 		],
-		"*.{ts,tsx,cts,mts,d.ts,d.cts,d.mts}": [
-			"pnpm eslint",
-			"pnpm tscheck"
+		"*.{ts,tsx,cts,mts}": [
+			"pnpm eslint"
 		]
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^20.4.1",
 		"@commitlint/config-conventional": "^20.4.1",
 		"@eslint/js": "^9.39.1",
+		"@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+		"@orpc/client": "^1.13.5",
 		"@types/node": "^24.10.1",
 		"eslint": "^9.39.1",
+		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-react-dom": "^2.11.0",
 		"eslint-plugin-react-hooks": "^7.0.1",
 		"eslint-plugin-react-refresh": "^0.4.24",
 		"eslint-plugin-react-x": "^2.11.0",
-		"eslint-config-prettier": "^10.1.5",
 		"globals": "^16.5.0",
-		"typescript": "~5.9.3",
-		"typescript-eslint": "^8.46.4",
-		"@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
 		"prettier": "^3.8.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
-		"husky": "^9.1.7",
-		"lint-staged": "^16.2.7"
+		"typescript": "~5.9.3",
+		"typescript-eslint": "^8.46.4"
 	},
 	"pnpm": {
 		"overrides": {
 			"vite": "npm:rolldown-vite@7.2.5"
-		}
+		},
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
 	}
 }

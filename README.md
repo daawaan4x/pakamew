@@ -24,6 +24,12 @@ pnpm run prettier:write		# format codebase with Prettier
 pnpm run tsc:check			# typecheck codebase with Typescript
 pnpm run tsgo:check			# typecheck codebase with experimental Typescript (Go)
 
+# Server App
+cd ./server
+pnpm run dev		# start development server
+pnpm run build		# bundle server for production
+pnpm run preview	# preview server for prod
+
 # Web App
 cd ./web
 pnpm run dev		# start development server

@@ -10,7 +10,8 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"preview": "tsx src/main.ts"
+		"build": "vite build",
+		"preview": "node --enable-source-maps dist/main.js"
 	},
 	"dependencies": {
 		"@orpc/server": "^1.13.5"

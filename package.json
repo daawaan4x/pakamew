@@ -3,8 +3,11 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
+		"build": "pnpm -r --parallel --filter @pakamew/web --filter @pakamew/server run build",
 		"dev:server": "pnpm --filter @pakamew/server run dev",
 		"dev:web": "pnpm --filter @pakamew/web run dev",
+		"preview:server": "pnpm --filter @pakamew/server run preview",
+		"preview:web": "pnpm --filter @pakamew/web run preview",
 		"eslint": "eslint .",
 		"eslint:fix": "eslint . --fix",
 		"prettier": "prettier --check .",

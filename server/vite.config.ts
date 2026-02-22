@@ -1,15 +1,26 @@
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+	appType: "custom",
 	plugins: [
-		...VitePluginNode({
-			adapter: async ({ app, req, res, next }) => {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-				await app(req, res, next);
-			},
-			appPath: "./src/main.dev.ts",
-			exportName: "viteNodeApp",
-		}),
+		...(command === "serve"
+			? [
+					...VitePluginNode({
+						adapter: async ({ app, req, res, next }) => {
+							// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+							await app(req, res, next);
+						},
+						appPath: "./src/main.dev.ts",
+						exportName: "viteNodeApp",
+					}),
+				]
+			: []),
 	],
-});
+	build: {
+		emptyOutDir: true,
+		sourcemap: true,
+		ssr: "./src/main.ts",
+		target: "node22",
+	},
+}));

@@ -6,6 +6,7 @@ runs:
     - uses: actions/setup-node@v6
       with:
         node-version: 22
+    # Intentionally pinned to @master until upstream cache behavior is fixed in a release.
     - uses: pnpm/action-setup@master
       with:
         version: 10

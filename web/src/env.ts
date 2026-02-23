@@ -23,4 +23,4 @@ export const EnvSchema = z.object({
 // Solution: Used "any" to bypass the type check and disabled lint rules for this
 //
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-export const env: Env = EnvSchema.parse(withEnvDefaults((import.meta as any).env));
+export const env: Env = EnvSchema.parse(withEnvDefaults((import.meta as any).env ?? {}));

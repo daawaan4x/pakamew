@@ -1,6 +1,7 @@
 import { createServer } from "node:http";
 import { handleNodeRequest } from "./app";
+import { env } from "./env";
 
 const server = createServer((req, res) => void handleNodeRequest(req, res));
 
-server.listen(3000, "127.0.0.1", () => console.log("Listening on 127.0.0.1:3000"));
+server.listen(env.PORT, env.HOST, () => console.log(`Listening on ${env.HOST}:${env.PORT}`));

@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
+import { env } from "./src/env";
 
 export default defineConfig(({ command }) => ({
 	appType: "custom",
@@ -17,6 +18,10 @@ export default defineConfig(({ command }) => ({
 				]
 			: []),
 	],
+	server: {
+		host: env.HOST,
+		port: env.PORT,
+	},
 	build: {
 		emptyOutDir: true,
 		sourcemap: true,

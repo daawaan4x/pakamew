@@ -1,5 +1,6 @@
+import "dotenv/config";
 import { z } from "zod/mini";
-import { EnvSchema, withEnvDefaults, type Env } from "./env";
+import { EnvSchema, type Env } from "./env";
 
 export interface ServerEnv extends Env {
 	/** Current Node runtime environment. */
@@ -12,26 +13,25 @@ export interface ServerEnv extends Env {
 	PORT: number;
 }
 
-type EnvSource = Record<string, unknown>;
-
-const defaults: Partial<ServerEnv> = {
-	NODE_ENV: "development",
-	HOST: "127.0.0.1",
-	PORT: 5173,
-};
-
 export const ServerEnvSchema = z.object({
-	NODE_ENV: z.enum(["development", "test", "production"]),
-	HOST: z.string().check(z.minLength(1)),
-	PORT: z.coerce.number().check(z.int(), z.minimum(1), z.maximum(65535)),
+	NODE_ENV: z._default(z.enum(["development", "test", "production"]), "development"),
+	HOST: z._default(z.string().check(z.minLength(1)), "127.0.0.1"),
+	PORT: z._default(z.coerce.number().check(z.int(), z.minimum(1), z.maximum(65535)), 5173),
 	...EnvSchema.shape,
 });
 
-export const withServerEnvDefaults = (source: EnvSource): EnvSource => ({
-	NODE_ENV: source.NODE_ENV ?? defaults.NODE_ENV,
-	HOST: source.HOST ?? defaults.HOST,
-	PORT: source.PORT ?? defaults.PORT,
-	...withEnvDefaults(source),
-});
+type ServerEnvSchemaShape = typeof ServerEnvSchema.shape;
 
-export const createServerEnv = (source: EnvSource): ServerEnv => ServerEnvSchema.parse(withServerEnvDefaults(source));
+/**
+ * Get a slice of the environment variables. Since the backend runs in different environments, this helper function allows only requiring a subset of environment variables at a given time (Development, Testing, CI, Production, etc.).
+ *
+ * @param slice - The slice of the environment variables to get.
+ * @param source - The source of the environment variables.
+ * @returns The environment variables for the given slice.
+ */
+export function getEnv<const K extends keyof ServerEnv>(
+	slice: (shape: ServerEnvSchemaShape) => Pick<ServerEnvSchemaShape, K>,
+	source: Record<string, unknown> = process.env,
+): Pick<ServerEnv, K> {
+	return z.object(slice(ServerEnvSchema.shape)).parse(source) as Pick<ServerEnv, K>;
+}

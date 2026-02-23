@@ -38,12 +38,13 @@ The following is a list of the primary scripts for the project.
 
 ```bash
 # Global Scripts
-pnpm run eslint				# lint codebase with ESLint
+pnpm run eslint				# lint with ESLint
 pnpm run eslint:fix			# fix lint errors with ESLint
-pnpm run prettier			# check codebase formatting with Prettier
-pnpm run prettier:write		# format codebase with Prettier
-pnpm run tsc:check			# typecheck codebase with Typescript
-pnpm run tsgo:check			# typecheck codebase with native Typescript (Go)
+pnpm run prettier			# check formatting with Prettier
+pnpm run prettier:write		# format with Prettier
+pnpm run tsc:check			# typecheck with Typescript
+pnpm run tsgo:check			# typecheck with native Typescript (experimental / faster)
+pnpm run test				# run vitest
 
 # Server App
 cd ./server
@@ -57,6 +58,10 @@ pnpm run dev		# start development server
 pnpm run build		# build web app
 pnpm run preview	# preview web for prod
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information
 
 ## Tooling
 

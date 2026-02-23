@@ -22,4 +22,18 @@ export const EnvSchema = z.object({
 	PORT: z.coerce.number().int().min(1).max(65535).default(3000),
 }) satisfies z.ZodType<Env>;
 
-export const env: Env = EnvSchema.parse(process.env);
+type EnvSchemaShape = typeof EnvSchema.shape;
+
+/**
+ * Get a slice of the environment variables. Since the backend runs in different environments, this helper function allows only requiring a subset of environment variables at a given time (Development, Testing, CI, Production, etc.).
+ *
+ * @param slice - The slice of the environment variables to get.
+ * @param source - The source of the environment variables.
+ * @returns The environment variables for the given slice.
+ */
+export function getEnv<const K extends keyof Env>(
+	slice: (shape: EnvSchemaShape) => Pick<EnvSchemaShape, K>,
+	source: Record<string, unknown> = process.env,
+): Pick<Env, K> {
+	return z.object(slice(EnvSchema.shape)).parse(source) as Pick<Env, K>;
+}

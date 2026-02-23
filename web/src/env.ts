@@ -5,22 +5,9 @@ export interface Env {
 	VITE_API_URL: string;
 }
 
-type EnvSource = Record<string, unknown>;
-
-const defaults: Partial<Env> = {
-	VITE_API_URL: "http://127.0.0.1:3000",
-};
-
-export const withEnvDefaults = (source: EnvSource): EnvSource => ({
-	VITE_API_URL: source.VITE_API_URL ?? defaults.VITE_API_URL,
-});
-
 export const EnvSchema = z.object({
-	VITE_API_URL: z.string().check(z.url()),
+	VITE_API_URL: z._default(z.string().check(z.url()), "http://127.0.0.1:3000"),
 });
 
-// Context: "env.ts" is a client-side file but it's imported in "env.server.ts" and import.meta is not recognized in tsconfig.node.json (server-side tsconfig)
-// Solution: Used "any" to bypass the type check and disabled lint rules for this
-//
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-export const env: Env = EnvSchema.parse(withEnvDefaults((import.meta as any).env ?? {}));
+// NOTE: This is a workaround to allow the server-side code to import the client-side environment variables. "env.ts" is a client-side file and import.meta is not recognized in tsconfig.node.json (server-side tsconfig)
+export const env: Env = EnvSchema.parse((import.meta as unknown as Record<string, unknown>).env ?? {});

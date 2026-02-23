@@ -1,6 +1,8 @@
 import { createServer } from "node:http";
 import { handleNodeRequest } from "./app";
-import { env } from "./env";
+import { getEnv } from "./env";
+
+const env = getEnv((env) => ({ HOST: env.HOST, PORT: env.PORT }));
 
 const server = createServer((req, res) => void handleNodeRequest(req, res));
 

@@ -82,7 +82,7 @@ importers:
         specifier: ^4.0.18
         version: 4.0.18(@types/node@24.10.11)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)
 
-  server:
+  packages/app-server:
     dependencies:
       '@orpc/server':
         specifier: ^1.13.5
@@ -116,13 +116,13 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(rolldown-vite@7.2.5(@types/node@24.10.11)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))
 
-  shared: {}
+  packages/app-shared: {}
 
-  web:
+  packages/app-web:
     dependencies:
       '@pakamew/server':
         specifier: workspace:*
-        version: link:../server
+        version: link:../app-server
       react:
         specifier: ^19.2.0
         version: 19.2.4

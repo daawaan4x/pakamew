@@ -1,4 +1,4 @@
 packages:
-  - "./server/"
-  - "./shared/"
-  - "./web/"
+  - "./packages/app-server/"
+  - "./packages/app-shared/"
+  - "./packages/app-web/"

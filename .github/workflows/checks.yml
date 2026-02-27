@@ -6,13 +6,21 @@ on:
   pull_request:
 
 jobs:
-  build:
-    name: Build
+  build-server:
+    name: Build App Server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/setup
-      - run: pnpm build
+      - run: pnpm build:server
+
+  build-web:
+    name: Build App Web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/setup
+      - run: pnpm build:web
 
   tsc:
     name: Typescript Compiler

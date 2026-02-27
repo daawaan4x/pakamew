@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
+import { admin, anonymous, apiKey, openAPI } from "better-auth/plugins";
 import { getEnv } from "./env";
 import { prisma } from "./lib/prisma";
 
@@ -11,6 +12,7 @@ export const auth = betterAuth({
 		autoSignIn: true,
 		requireEmailVerification: env.NODE_ENV != "development",
 	},
+	plugins: [admin(), anonymous(), openAPI(), apiKey()],
 	database: prismaAdapter(prisma, {
 		usePlural: true,
 		transaction: true,

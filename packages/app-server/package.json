@@ -5,7 +5,7 @@
 	"type": "module",
 	"exports": {
 		"./api": {
-			"types": "./src/api/index.ts"
+			"types": "./src/lib/api.ts"
 		}
 	},
 	"scripts": {
@@ -22,9 +22,11 @@
 		"@orpc/server": "^1.13.5",
 		"@prisma/adapter-pg": "^7.4.1",
 		"@prisma/client": "^7.4.1",
+		"better-auth": "^1.4.19",
 		"pg": "^8.18.0"
 	},
 	"devDependencies": {
+		"@better-auth/cli": "latest",
 		"@types/node": "^24.10.11",
 		"@types/pg": "^8.16.0",
 		"prisma": "^7.4.1",

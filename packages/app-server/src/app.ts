@@ -2,7 +2,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/node";
 import { CORSPlugin } from "@orpc/server/plugins";
-import { router } from "./api";
+import { router } from "./routes";
 
 const handler = new RPCHandler(router, {
 	plugins: [new CORSPlugin()],

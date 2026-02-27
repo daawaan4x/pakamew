@@ -3,3 +3,7 @@ dist
 pnpm-lock.yaml
 static
 **/generated
+.agents
+*lock.json
+*lock.yaml
+*lock.yml

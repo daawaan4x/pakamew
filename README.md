@@ -13,15 +13,44 @@ After cloning the repository, run the following commands to initialize the repo.
 pnpm install		# install project dependencies and prepares git hooks
 ```
 
+Create local environment files for both apps:
+
+```bash
+cp ./server/.env.example ./server/.env
+cp ./web/.env.example ./web/.env
+```
+
+Start external dependency services with docker-compose:
+
+```bash
+docker compose up -d
+```
+
+Generate Prisma client and apply schema changes to the local database:
+
+```bash
+cd ./server
+pnpm exec prisma generate
+pnpm exec prisma migrate dev
+```
+
 The following is a list of the primary scripts for the project.
 
 ```bash
 # Global Scripts
-pnpm run eslint				# lint codebase with ESLint
+pnpm run eslint				# lint with ESLint
 pnpm run eslint:fix			# fix lint errors with ESLint
-pnpm run prettier			# check codebase formatting with Prettier
-pnpm run prettier:write		# format codebase with Prettier
-pnpm run tscheck			# typecheck codebase with Typescript
+pnpm run prettier			# check formatting with Prettier
+pnpm run prettier:write		# format with Prettier
+pnpm run tsc:check			# typecheck with Typescript
+pnpm run tsgo:check			# typecheck with native Typescript (experimental / faster)
+pnpm run test				# run vitest
+
+# Server App
+cd ./server
+pnpm run dev		# start development server
+pnpm run build		# bundle server for production
+pnpm run preview	# preview server for prod
 
 # Web App
 cd ./web
@@ -29,6 +58,10 @@ pnpm run dev		# start development server
 pnpm run build		# build web app
 pnpm run preview	# preview web for prod
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information
 
 ## Tooling
 

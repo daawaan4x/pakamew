@@ -20,10 +20,10 @@
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.19.9",
+		"@orpc/openapi": "^1.13.5",
 		"@orpc/server": "^1.13.5",
 		"@prisma/adapter-pg": "^7.4.1",
 		"@prisma/client": "^7.4.1",
-		"better-auth": "^1.4.19",
 		"hono": "^4.12.3",
 		"pg": "^8.18.0"
 	},

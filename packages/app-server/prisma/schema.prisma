@@ -24,6 +24,13 @@ model Users {
   sessions      Sessions[]
   accounts      Accounts[]
 
+  role        String?
+  banned      Boolean?  @default(false)
+  banReason   String?
+  banExpires  DateTime?
+  isAnonymous Boolean?  @default(false)
+  apikeys     Apikeys[]
+
   @@unique([email])
   @@map("users")
 }
@@ -38,6 +45,8 @@ model Sessions {
   userAgent String?
   userId    String
   users     Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
 
   @@unique([token])
   @@index([userId])
@@ -74,4 +83,33 @@ model Verifications {
 
   @@index([identifier])
   @@map("verifications")
+}
+
+model Apikeys {
+  id                  String    @id
+  name                String?
+  start               String?
+  prefix              String?
+  key                 String
+  userId              String
+  users               Users     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refillInterval      Int?
+  refillAmount        Int?
+  lastRefillAt        DateTime?
+  enabled             Boolean?  @default(true)
+  rateLimitEnabled    Boolean?  @default(true)
+  rateLimitTimeWindow Int?      @default(86400000)
+  rateLimitMax        Int?      @default(10)
+  requestCount        Int?      @default(0)
+  remaining           Int?
+  lastRequest         DateTime?
+  expiresAt           DateTime?
+  createdAt           DateTime
+  updatedAt           DateTime
+  permissions         String?
+  metadata            String?
+
+  @@index([key])
+  @@index([userId])
+  @@map("apikeys")
 }

@@ -2,7 +2,7 @@ node_modules
 dist
 pnpm-lock.yaml
 static
-**/generated
+generated
 .agents
 *lock.json
 *lock.yaml

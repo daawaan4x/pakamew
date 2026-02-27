@@ -1,10 +1,10 @@
-import type { IncomingMessage, ServerResponse } from "node:http";
 import { onError } from "@orpc/server";
-import { RPCHandler } from "@orpc/server/node";
+import { RPCHandler } from "@orpc/server/fetch";
 import { CORSPlugin } from "@orpc/server/plugins";
-import { router } from "./routes";
+import { Hono } from "hono";
+import { initHono, orpcRouter } from "./routes";
 
-const handler = new RPCHandler(router, {
+const orpcHandler = new RPCHandler(orpcRouter, {
 	plugins: [new CORSPlugin()],
 	interceptors: [
 		onError((error) => {
@@ -13,26 +13,29 @@ const handler = new RPCHandler(router, {
 	],
 });
 
-export async function handleNodeRequest(
-	req: IncomingMessage,
-	res: ServerResponse,
-	options: { respond404?: boolean } = {},
-) {
-	options.respond404 ??= true;
+export function createApp() {
+	const app = new Hono();
 
-	const result = await handler.handle(req, res, {
-		context: { headers: req.headers },
-		prefix: "/api",
-	});
+	app.use("/api/*", async (c, next) => {
+		const result = await orpcHandler.handle(c.req.raw, {
+			context: { headers: c.req.raw.headers },
+			prefix: "/api",
+		});
 
-	if (!result.matched) {
-		if (options.respond404) {
-			res.statusCode = 404;
-			res.end("No procedure matched");
+		if (result.matched) {
+			return result.response;
 		}
 
-		return { matched: false };
-	}
+		await next();
+	});
 
-	return { matched: true };
+	initHono(app);
+
+	return app;
+}
+
+export const app = createApp();
+
+export function isAppRoute(method: string, pathname: string): boolean {
+	return app.router.match(method.toUpperCase(), pathname)[0].length > 0;
 }

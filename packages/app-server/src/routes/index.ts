@@ -1,7 +1,2 @@
-import { os } from "@orpc/server";
-
-const ping = os.handler(() => "pong").callable();
-
-export const router = {
-	ping,
-};
+export { initHono } from "./hono";
+export { orpcRouter } from "./orpc";

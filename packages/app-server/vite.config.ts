@@ -14,7 +14,7 @@ export default defineConfig(({ command }) => ({
 							// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 							await app(req, res, next);
 						},
-						appPath: "./src/main.dev.ts",
+						appPath: "./src/main.vite.ts",
 						exportName: "viteNodeApp",
 					}),
 				]
@@ -27,7 +27,7 @@ export default defineConfig(({ command }) => ({
 	build: {
 		emptyOutDir: true,
 		sourcemap: true,
-		ssr: "./src/main.ts",
+		ssr: "./src/main.node.ts",
 		target: "node22",
 	},
 }));

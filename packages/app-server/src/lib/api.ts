@@ -1,4 +1,4 @@
 import type { RouterClient } from "@orpc/server";
-import type { router } from "../routes";
+import type { orpcRouter } from "../routes";
 
-export type ApiClient = RouterClient<typeof router>;
+export type ApiClient = RouterClient<typeof orpcRouter>;

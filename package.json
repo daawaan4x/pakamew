@@ -19,7 +19,7 @@
 		"tsc:check": "tsc -b --noEmit",
 		"tsgo:check": "tsgo -b --noEmit",
 		"commitlint": "commitlint --edit",
-		"prepare": "husky && pnpm --filter @pakamew/server exec prisma generate"
+		"prepare": "husky"
 	},
 	"lint-staged": {
 		"*": [

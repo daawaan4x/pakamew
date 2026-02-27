@@ -11,7 +11,8 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"preview": "node --enable-source-maps dist/main.node.js"
+		"preview": "node --enable-source-maps dist/main.node.js",
+		"prepare": "prisma generate"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.19.9",

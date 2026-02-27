@@ -39,9 +39,9 @@ type EnvSchemaShape = typeof EnvSchema.shape;
  * @param source - The source of the environment variables.
  * @returns The environment variables for the given slice.
  */
-export function getEnv<const K extends keyof Env>(
-	slice: (shape: EnvSchemaShape) => Pick<EnvSchemaShape, K>,
+export function getEnv<const SliceShape extends z.ZodRawShape>(
+	slice: (shape: EnvSchemaShape) => SliceShape,
 	source: Record<string, unknown> = process.env,
-): Pick<Env, K> {
-	return z.object(slice(EnvSchema.shape)).parse(source) as Pick<Env, K>;
+): z.output<z.ZodObject<SliceShape>> {
+	return z.object(slice(EnvSchema.shape)).parse(source);
 }

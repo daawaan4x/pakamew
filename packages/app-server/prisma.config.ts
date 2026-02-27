@@ -1,7 +1,9 @@
 import { defineConfig } from "prisma/config";
 import { getEnv } from "./src/env";
 
-const env = getEnv((env) => ({ DATABASE_URL: env.DATABASE_URL }));
+const env = getEnv((schema) => ({
+	DATABASE_URL: schema.DATABASE_URL.optional(),
+}));
 
 export default defineConfig({
 	schema: "prisma/schema.prisma",

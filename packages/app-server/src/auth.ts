@@ -12,7 +12,7 @@ export const auth = betterAuth({
 		autoSignIn: true,
 		requireEmailVerification: env.NODE_ENV != "development",
 	},
-	plugins: [admin(), anonymous(), openAPI(), apiKey()],
+	plugins: [admin(), anonymous(), openAPI({ disableDefaultReference: true }), apiKey()],
 	database: prismaAdapter(prisma, {
 		usePlural: true,
 		transaction: true,

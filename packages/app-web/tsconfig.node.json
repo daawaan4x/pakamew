@@ -8,5 +8,5 @@
 		"types": ["node"],
 		"composite": true
 	},
-	"files": []
+	"include": ["vite.config.ts"]
 }

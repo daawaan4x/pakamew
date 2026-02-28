@@ -1,0 +1,16 @@
+{
+	"name": "@pakamew/livestream-node",
+	"private": true,
+	"version": "0.0.0",
+	"type": "commonjs",
+	"scripts": {
+		"start:wifi": "node server-wifi.js",
+		"start:wired": "node server-wired.js"
+	},
+	"dependencies": {
+		"@serialport/parser-delimiter": "^13.0.0",
+		"express": "^5.2.1",
+		"serialport": "^13.0.0",
+		"ws": "^8.19.0"
+	}
+}

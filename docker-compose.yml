@@ -1,4 +1,17 @@
 services:
+  lgtm:
+    image: grafana/otel-lgtm:latest
+    container_name: pakamew-lgtm
+    restart: unless-stopped
+    env_file:
+      - path: ./packages/observability/open-telemetry/.env
+        required: false
+    ports:
+      - "3001:3000"
+      - "4318:4318"
+    volumes:
+      - ./packages/observability/open-telemetry/otelcol-config.tail.yaml:/otel-lgtm/otelcol-config.yaml:ro
+
   postgres:
     image: postgres:17.4
     container_name: pakamew-postgres

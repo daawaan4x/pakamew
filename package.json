@@ -67,7 +67,8 @@
 			"@prisma/engines",
 			"better-sqlite3",
 			"esbuild",
-			"prisma"
+			"prisma",
+			"@serialport/bindings-cpp"
 		]
 	}
 }

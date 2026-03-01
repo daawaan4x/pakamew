@@ -2,3 +2,4 @@ packages:
   - "./packages/app-server/"
   - "./packages/app-shared/"
   - "./packages/app-web/"
+  - "./packages/livestream-node"

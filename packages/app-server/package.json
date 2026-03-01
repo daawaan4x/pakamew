@@ -9,8 +9,8 @@
 		}
 	},
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
+		"dev": "vite --configLoader runner",
+		"build": "vite build --configLoader runner",
 		"preview": "node --enable-source-maps dist/main.node.js",
 		"prepare": "prisma generate"
 	},

@@ -1,5 +1,17 @@
 # Pakamew
 
+## Tech Stack
+
+- 🧠 **Backend Runtime:** [Node.js](https://nodejs.org/) + [Hono](https://hono.dev/) powers the server and backend tooling.
+- 🛣️ **API Layer:** [oRPC](https://orpc.unnoq.com/) + [OpenAPI](https://www.openapis.org/) + [Scalar](https://scalar.com/) provide typed APIs and interactive API docs.
+- 🔐 **Authentication:** [Better Auth](https://www.better-auth.com/) handles sessions, anonymous access, admin flows, and API keys.
+- 🗄️ **Database:** [Prisma](https://www.prisma.io/) + [PostgreSQL](https://www.postgresql.org/) power typed data access and relational persistence.
+- 📊 **Observability:** [OpenTelemetry](https://opentelemetry.io/) + [Grafana](https://grafana.com/) + [Loki](https://grafana.com/oss/loki/) + [Tempo](https://grafana.com/oss/tempo/) + [Prometheus](https://prometheus.io/) cover traces, logs, metrics, and dashboards.
+- 📡 **Livestream Node:** [Express](https://expressjs.com/) + [ws](https://github.com/websockets/ws) + [SerialPort](https://serialport.io/) bridge shelter camera streams over network and serial channels.
+- 🐾 **Shelter Device:** [esp32-camera](https://github.com/espressif/esp32-camera) + [WiFi (Arduino ESP32)](https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi) + [Serial (Arduino)](https://docs.arduino.cc/language-reference/en/functions/communication/serial/) run shelter capture, streaming, and device I/O.
+
+Detailed breakdown: [docs/technology-stack.md](./docs/technology-stack.md)
+
 ## Development
 
 Environment:
@@ -69,6 +81,8 @@ This project uses the following tools to enforce consistent coding conventions, 
 
 ### Formatting & Linting
 
+- [Vitest](https://vitest.dev/): Framework for unit and integration testing.
+- [Vite](https://vitejs.dev/): HMR-dev server and bundler for web applications.
 - [Prettier](https://prettier.io/): Enforces consistent code formatting.
 - [ESLint](https://eslint.org/): Enforces best practices on coding conventions.
 - [Typescript](http://typescriptlang.org/): Provides static typing and checks.

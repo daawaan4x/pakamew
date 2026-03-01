@@ -1,2 +1,2 @@
-export { initHono } from "./hono";
-export { orpcRouter } from "./orpc";
+export { initRestRoutes } from "./(rest)";
+export { initRpcRoutes } from "./(rpc)";

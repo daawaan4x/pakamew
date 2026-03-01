@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 import { getEnv } from "./src/env";
 
-const env = getEnv((env) => ({ HOST: env.HOST, PORT: env.PORT }));
+const env = getEnv((env) => [env.HOST, env.PORT]);
 
 export default defineConfig(({ command }) => ({
 	appType: "custom",

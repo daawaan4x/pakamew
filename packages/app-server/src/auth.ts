@@ -2,9 +2,9 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { admin, anonymous, apiKey, openAPI } from "better-auth/plugins";
 import { getEnv } from "./env";
-import { prisma } from "./lib/prisma";
+import { getPrisma } from "./lib/prisma";
 
-const env = getEnv((shape) => ({ NODE_ENV: shape.NODE_ENV }));
+const env = getEnv((env) => [env.NODE_ENV]);
 
 export const auth = betterAuth({
 	emailAndPassword: {
@@ -13,7 +13,7 @@ export const auth = betterAuth({
 		requireEmailVerification: env.NODE_ENV != "development",
 	},
 	plugins: [admin(), anonymous(), openAPI({ disableDefaultReference: true }), apiKey()],
-	database: prismaAdapter(prisma, {
+	database: prismaAdapter(getPrisma(), {
 		usePlural: true,
 		transaction: true,
 		provider: "postgresql",

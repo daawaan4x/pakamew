@@ -7,7 +7,7 @@ on:
 
 jobs:
   vitest:
-    name: Vitest
+    name: 🧪 Vitest
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -15,7 +15,7 @@ jobs:
       - run: pnpm test
 
   build-server:
-    name: Build App Server
+    name: 🖥️ Build App Server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -23,7 +23,7 @@ jobs:
       - run: pnpm build:server
 
   build-web:
-    name: Build App Web
+    name: 🌐 Build App Web
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -31,7 +31,7 @@ jobs:
       - run: pnpm build:web
 
   tsc:
-    name: Typescript Compiler
+    name: 🔷 Typescript Compiler
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -39,7 +39,7 @@ jobs:
       - run: pnpm tsgo:check
 
   prettier:
-    name: Prettier
+    name: ✨ Prettier
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -47,7 +47,7 @@ jobs:
       - run: pnpm prettier
 
   eslint:
-    name: ESLint
+    name: 🧹 ESLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -55,7 +55,7 @@ jobs:
       - run: pnpm eslint
 
   commitlint:
-    name: CommitLint
+    name: 📝 CommitLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6

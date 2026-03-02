@@ -8,3 +8,4 @@ generated
 *lock.yaml
 *lock.yml
 *.gen.ts
+.tanstack

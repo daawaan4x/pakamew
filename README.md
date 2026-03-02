@@ -10,7 +10,7 @@
 - 🗄️ **Database:** [Prisma](https://www.prisma.io/) + [PostgreSQL](https://www.postgresql.org/) power typed data access and relational persistence.
 - 📊 **Observability:** [OpenTelemetry](https://opentelemetry.io/) + [Grafana](https://grafana.com/) + [Loki](https://grafana.com/oss/loki/) + [Tempo](https://grafana.com/oss/tempo/) + [Prometheus](https://prometheus.io/) cover traces, logs, metrics, and dashboards.
 - 📡 **Livestream Node:** [Express](https://expressjs.com/) + [ws](https://github.com/websockets/ws) + [SerialPort](https://serialport.io/) bridge shelter camera streams over network and serial channels.
-- 🐾 **Shelter Device:** [esp32-camera](https://github.com/espressif/esp32-camera) + [WiFi (Arduino ESP32)](https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi) + [Serial (Arduino)](https://docs.arduino.cc/language-reference/en/functions/communication/serial/) run shelter capture, streaming, and device I/O.
+- 🐾 **Shelter Device:** [esp32-camera](https://github.com/espressif/esp32-camera) + [WiFi (Arduino ESP32)](https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi) + [Serial (Arduino)](https://docs.arduino.cc/language-reference/en/functions/communication/serial/) run shelter streaming
 
 Detailed breakdown: [docs/technology-stack.md](./docs/technology-stack.md)
 
@@ -38,7 +38,7 @@ cp ./web/.env.example ./web/.env
 Start external dependency services with docker-compose:
 
 ```bash
-# ℹ️ Grafana LGTM for Observability is optional
+# ℹ️ Grafana LGTM for Observability during dev is OPTIONAL
 # ⚠️ See download/disk sizes
 docker compose up -d postgres   # postgres:17.4 ≈ 100 MB download size / 400 MB disk size
 docker compose up -d lgtm       # grafana/otel-lgtm:0.19.1 ≈ 600 MB download size / 2.0 GB disk size

@@ -13,16 +13,13 @@ const env = getEnv((env) => [env.HOST, env.PORT]);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-	// appType: "spa",
+	appType: "spa",
 	envPrefix: ["VITE_"],
-	// build: {
-	// 	minify: "oxc",
-	// 	cssMinify: "lightningcss",
-	// 	cssCodeSplit: true,
-	// 	reportCompressedSize: true,
-	// 	sourcemap: "hidden",
-	// 	emptyOutDir: true,
-	// },
+	build: {
+		reportCompressedSize: true,
+		sourcemap: "hidden",
+		emptyOutDir: true,
+	},
 	server: {
 		host: env.HOST,
 		port: env.PORT,

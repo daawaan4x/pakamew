@@ -23,7 +23,7 @@ After cloning the repository, run the following commands to initialize the repo.
 
 ```bash
 # ⚠️ project node_modules ≈ 700 MB disk size
-pnpm install		# install project dependencies and prepares git hooks
+pnpm install        # install project dependencies and prepares git hooks
 ```
 
 Create local environment files for both apps:
@@ -38,8 +38,8 @@ Start external dependency services with docker-compose:
 ```bash
 # ℹ️ Grafana LGTM for Observability is optional
 # ⚠️ See download/disk sizes
-docker compose up -d postgres	# postgres:17.4 ≈ 100 MB download size / 400 MB disk size
-docker compose up -d lgtm		# grafana/otel-lgtm:0.19.1 ≈ 600 MB download size / 2.0 GB disk size
+docker compose up -d postgres   # postgres:17.4 ≈ 100 MB download size / 400 MB disk size
+docker compose up -d lgtm       # grafana/otel-lgtm:0.19.1 ≈ 600 MB download size / 2.0 GB disk size
 ```
 
 Generate Prisma client and apply schema changes to the local database:
@@ -54,25 +54,25 @@ The following is a list of the primary scripts for the project.
 
 ```bash
 # Global Scripts
-pnpm run eslint				# lint with ESLint
-pnpm run eslint:fix			# fix lint errors with ESLint
-pnpm run prettier			# check formatting with Prettier
-pnpm run prettier:write		# format with Prettier
-pnpm run tsc:check			# typecheck with Typescript
-pnpm run tsgo:check			# typecheck with native Typescript (experimental / faster)
-pnpm run test				# run vitest
+pnpm run eslint             # lint with ESLint
+pnpm run eslint:fix         # fix lint errors with ESLint
+pnpm run prettier           # check formatting with Prettier
+pnpm run prettier:write     # format with Prettier
+pnpm run tsc:check          # typecheck with Typescript
+pnpm run tsgo:check         # typecheck with native Typescript (experimental / faster)
+pnpm run test               # run vitest
 
 # Server App
 cd ./server
-pnpm run dev		# start development server
-pnpm run build		# bundle server for production
-pnpm run preview	# preview server for prod
+pnpm run dev        # start development server
+pnpm run build      # bundle server for production
+pnpm run preview    # preview server for prod
 
 # Web App
 cd ./web
-pnpm run dev		# start development server
-pnpm run build		# build web app
-pnpm run preview	# preview web for prod
+pnpm run dev        # start development server
+pnpm run build      # build web app
+pnpm run preview    # preview web for prod
 ```
 
 ## Contributing

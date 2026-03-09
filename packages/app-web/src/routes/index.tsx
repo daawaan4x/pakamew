@@ -5,5 +5,13 @@ export const Route = createFileRoute("/")({
 });
 
 function App() {
-	return <div>Hello World</div>;
+	return (
+		<div>
+			Hello World
+			<a href="/_demo/livestream">
+				{" "}
+				<button type="button"> Go to Livestream</button>{" "}
+			</a>
+		</div>
+	);
 }

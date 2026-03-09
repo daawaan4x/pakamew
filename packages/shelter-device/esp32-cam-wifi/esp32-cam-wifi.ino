@@ -149,6 +149,12 @@ void setup() {
   
   // Reconnect automatically if connection to the Node.js server is lost
   webSocket.setReconnectInterval(5000); 
+
+  sensor_t * s = esp_camera_sensor_get();
+  s->set_vflip(s, 1);
+  s->set_hmirror(s, 0);
+
+  
 }
     
 // ==========================================

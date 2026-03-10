@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useRef, useState } from "react";
 
-export type LivestreamStatus = "idle" | "connecting" | "open" | "closed" | "error";
-
-interface LivestreamDiagnostics {
+interface Livestream {
 	frameUrl: string | null;
-	status: LivestreamStatus;
+	status: "idle" | "connecting" | "open" | "closed" | "error";
 	error: Event | null;
 	socket: WebSocket | null;
 }
@@ -16,9 +14,9 @@ export interface LivestreamPlayerProps {
 	className?: string;
 }
 
-function useLivestreamPlayerDiagnostics(url: string): LivestreamDiagnostics {
+function useLivestreamPlayer(url: string): Livestream {
 	const [frameUrl, setFrameUrl] = useState<string | null>(null);
-	const [status, setStatus] = useState<LivestreamStatus>("idle");
+	const [status, setStatus] = useState<Livestream["status"]>("idle");
 	const [error, setError] = useState<Event | null>(null);
 	const [socket, setSocket] = useState<WebSocket | null>(null);
 	const activeBlobUrlRef = useRef<string | null>(null);
@@ -88,7 +86,7 @@ function useLivestreamPlayerDiagnostics(url: string): LivestreamDiagnostics {
 }
 
 export function LivestreamPlayer({ url, alt = "Connecting...", className }: LivestreamPlayerProps) {
-	const { frameUrl } = useLivestreamPlayerDiagnostics(url);
+	const { frameUrl } = useLivestreamPlayer(url);
 
 	return <img src={frameUrl ?? ""} alt={alt} className={className} />;
 }

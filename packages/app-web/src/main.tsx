@@ -11,8 +11,8 @@ import { getRouter } from "./router";
 function main() {
 	const router = getRouter();
 
-	const element = document.getElementById("app")!;
-	if (!element.innerHTML) return;
+	const element = document.getElementById("app");
+	if (!element) return;
 
 	const root = ReactDOM.createRoot(element);
 	root.render(

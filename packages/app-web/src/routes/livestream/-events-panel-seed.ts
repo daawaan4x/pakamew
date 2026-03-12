@@ -127,3 +127,5 @@ export const FEEDING_STATION_EVENTS: FeedingStationEventItem[] = [
 		time: "2:45 PM",
 	},
 ];
+
+FEEDING_STATION_EVENTS.reverse();

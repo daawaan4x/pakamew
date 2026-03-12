@@ -1,4 +1,4 @@
-import { MobileBottomNav } from "@/components/mobile-bottom-nav";
+import { BottomNavbar } from "@/components/bottom-navbar";
 import { cn } from "@/lib/utils";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, Outlet, useRouterState } from "@tanstack/react-router";
@@ -13,18 +13,18 @@ function RootComponent() {
 	const pathname = useRouterState({
 		select: (state) => state.location.pathname,
 	});
-	// Demo routes manage their own layout and should not render global mobile navigation.
+	// Demo routes manage their own layout and should not render global bottom navigation.
 	const isDemo = pathname.startsWith("/_demo");
 
 	return (
 		<>
 			{/* Scrollable viewport for the active route content */}
-			<div className={cn("h-dvh overflow-y-auto", !isDemo ? "pb-16" : undefined)}>
+			<div className={cn("h-dvh overflow-y-auto", !isDemo ? "pb-16 md:pb-24" : undefined)}>
 				<Outlet />
 			</div>
 
-			{/* Persistent mobile bottom navigation for non-demo routes */}
-			{!isDemo ? <MobileBottomNav pathname={pathname} /> : null}
+			{/* Persistent bottom navigation for non-demo routes */}
+			{!isDemo ? <BottomNavbar pathname={pathname} /> : null}
 
 			{/* Development tooling panels */}
 			<TanStackDevtools

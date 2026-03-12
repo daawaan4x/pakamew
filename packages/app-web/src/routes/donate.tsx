@@ -141,7 +141,7 @@ function DonatePage() {
 						</FieldGroup>
 					</CardContent>
 
-					<CardFooter className="mt-auto flex-col items-stretch gap-3 border-t px-5 pt-5 pb-10 sm:px-8 sm:pb-10">
+					<CardFooter className="mt-auto flex-col items-stretch gap-3 border-t px-5 pt-5 pb-10 sm:px-8 sm:pb-8">
 						<Button type="button" size="lg" disabled={!activeAmount} className="w-full">
 							{activeAmount ? `Donate ${formatPeso(activeAmount)}` : "Donate"}
 						</Button>

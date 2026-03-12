@@ -1,7 +1,7 @@
+import { LiveBadge } from "@/components/live-badge";
 import { ThemeToggleButton } from "@/components/theme-toggle-button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -56,7 +56,7 @@ const RECENT_ACTIVITY: ActivityItem[] = [
 function Homepage() {
 	return (
 		<>
-			<main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-6 px-4 pt-6 pb-10 sm:px-6 sm:pt-8 lg:gap-8 lg:pt-10">
+			<main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-6 px-4 pt-6 pb-10 sm:px-6 sm:pt-8 sm:pb-8 lg:gap-8 lg:pt-10">
 				{/* Header with title and profile shortcut */}
 				<header className="flex items-center justify-between gap-4">
 					<div className="flex flex-col gap-1">
@@ -97,9 +97,7 @@ function Homepage() {
 						</div>
 
 						{/* Live status indicator */}
-						<Badge variant="destructive" className="absolute top-4 left-4">
-							Live
-						</Badge>
+						<LiveBadge className="absolute top-4 left-4" />
 
 						{/* Desktop CTA overlay for stream context and quick action */}
 						<div className="absolute inset-x-0 bottom-0 hidden md:block">

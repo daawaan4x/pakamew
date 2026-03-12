@@ -10,20 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as LivestreamRouteImport } from './routes/livestream'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as Char91_demoChar93RouteRouteImport } from './routes/[_demo]/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LivestreamIndexRouteImport } from './routes/livestream/index'
 import { Route as Char91_demoChar93LivestreamRouteImport } from './routes/[_demo]/livestream'
 
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LivestreamRoute = LivestreamRouteImport.update({
-  id: '/livestream',
-  path: '/livestream',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonateRoute = DonateRouteImport.update({
@@ -41,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LivestreamIndexRoute = LivestreamIndexRouteImport.update({
+  id: '/livestream/',
+  path: '/livestream/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91_demoChar93LivestreamRoute =
   Char91_demoChar93LivestreamRouteImport.update({
     id: '/livestream',
@@ -52,26 +52,26 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/_demo': typeof Char91_demoChar93RouteRouteWithChildren
   '/donate': typeof DonateRoute
-  '/livestream': typeof LivestreamRoute
   '/profile': typeof ProfileRoute
   '/_demo/livestream': typeof Char91_demoChar93LivestreamRoute
+  '/livestream/': typeof LivestreamIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/_demo': typeof Char91_demoChar93RouteRouteWithChildren
   '/donate': typeof DonateRoute
-  '/livestream': typeof LivestreamRoute
   '/profile': typeof ProfileRoute
   '/_demo/livestream': typeof Char91_demoChar93LivestreamRoute
+  '/livestream': typeof LivestreamIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_demo': typeof Char91_demoChar93RouteRouteWithChildren
   '/donate': typeof DonateRoute
-  '/livestream': typeof LivestreamRoute
   '/profile': typeof ProfileRoute
   '/_demo/livestream': typeof Char91_demoChar93LivestreamRoute
+  '/livestream/': typeof LivestreamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,33 +79,33 @@ export interface FileRouteTypes {
     | '/'
     | '/_demo'
     | '/donate'
-    | '/livestream'
     | '/profile'
     | '/_demo/livestream'
+    | '/livestream/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/_demo'
     | '/donate'
-    | '/livestream'
     | '/profile'
     | '/_demo/livestream'
+    | '/livestream'
   id:
     | '__root__'
     | '/'
     | '/_demo'
     | '/donate'
-    | '/livestream'
     | '/profile'
     | '/_demo/livestream'
+    | '/livestream/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Char91_demoChar93RouteRoute: typeof Char91_demoChar93RouteRouteWithChildren
   DonateRoute: typeof DonateRoute
-  LivestreamRoute: typeof LivestreamRoute
   ProfileRoute: typeof ProfileRoute
+  LivestreamIndexRoute: typeof LivestreamIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,13 +115,6 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/livestream': {
-      id: '/livestream'
-      path: '/livestream'
-      fullPath: '/livestream'
-      preLoaderRoute: typeof LivestreamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donate': {
@@ -143,6 +136,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/livestream/': {
+      id: '/livestream/'
+      path: '/livestream'
+      fullPath: '/livestream/'
+      preLoaderRoute: typeof LivestreamIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_demo/livestream': {
@@ -173,8 +173,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Char91_demoChar93RouteRoute: Char91_demoChar93RouteRouteWithChildren,
   DonateRoute: DonateRoute,
-  LivestreamRoute: LivestreamRoute,
   ProfileRoute: ProfileRoute,
+  LivestreamIndexRoute: LivestreamIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

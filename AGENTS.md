@@ -26,12 +26,16 @@ Skills marked with (!) are crucial to development and must always be included fo
 - (!) `vercel-react-best-practices` - Use this skill when writing, reviewing, or refactoring React/Next.js code to enforce performance best practices.
 - (!) `web-design-guidelines` - Use this skill when reviewing UI quality, accessibility, and UX against web interface best practices.
 - (!) `vercel-composition-patterns` - Use this skill when component APIs are getting complex (boolean prop proliferation, compound components, context architecture).
-- `shadcn` - Use this skill when constructing any UI or the task touches shadcn/ui components, registries, presets, or projects with `components.json`.
-- `frontend-design` - Use this skill when building or styling web pages/components, marketing pages, visual artifacts, or beautifying UI.
-- `interface-design` - Use this skill when building product interfaces such as dashboards, admin panels, SaaS tools, and app flows (not marketing pages).
+
+Condition-based skill inclusion (mandatory when condition matches):
+
+- `shadcn` - Include this skill whenever constructing, implementing, or modifying any UI (components, pages, layouts, styling, states), and whenever the task touches shadcn/ui, `components.json`, registries, presets, or shadcn component composition. Treat this as required for UI implementation work.
+- `frontend-design` - Include this skill when the task focuses on aesthetic/styling work for visual pages or components, including landing pages, marketing sections, visual polish, branding treatment, or beautifying UI.
+- `interface-design` - Include this skill when the task focuses on product/app interface styling and UX patterns, including dashboards, admin panels, SaaS screens, tools, workflows, and data-dense application surfaces. Do not use this as the primary design skill for marketing/landing aesthetics.
 
 Frontend workflow expectation:
 
 1. Load the always-include skills first.
-2. Add all task-specific frontend skills that apply.
-3. If multiple frontend skills apply, use all of them (do not pick only one).
+2. Apply condition-based routing and include every skill whose condition matches.
+3. For UI implementation tasks, always include `shadcn` in addition to any matching design skill(s).
+4. If a task spans both visual marketing aesthetics and app-interface concerns, include both `frontend-design` and `interface-design`.

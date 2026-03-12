@@ -81,11 +81,19 @@ function Homepage() {
 				<Card className="gap-0 overflow-hidden py-0">
 					<AspectRatio ratio={16 / 9} className="bg-muted relative">
 						{/* Placeholder visual shown until full livestream page is opened */}
-						<div className="from-muted via-background to-muted flex h-full w-full items-center justify-center bg-gradient-to-br px-6">
+						<img
+							src="/mr-fresh.jpg"
+							alt="Shelter dog placeholder preview"
+							className="absolute inset-0 h-full w-full object-cover object-center"
+						/>
+						<div
+							aria-hidden
+							className="from-background/75 via-background/20 to-background/10 absolute inset-0 bg-gradient-to-t"
+						/>
+						<div aria-hidden className="absolute inset-0 flex items-center justify-center px-6">
 							<div className="bg-background/90 ring-border flex size-14 items-center justify-center rounded-full ring-1">
 								<PawPrintIcon />
 							</div>
-							<div className="sr-only">Static shelter livestream preview placeholder</div>
 						</div>
 
 						{/* Live status indicator */}

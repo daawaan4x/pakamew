@@ -1,10 +1,10 @@
-import { LiveBadge } from "@/components/live-badge";
 import { ThemeToggleButton } from "@/components/theme-toggle-button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { LivestreamPlayer } from "@/lib/livestream";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import { BoneIcon, HeartHandshakeIcon, PawPrintIcon, ShieldCheckIcon, UserRoundIcon } from "lucide-react";
@@ -79,25 +79,8 @@ function Homepage() {
 
 				{/* Livestream preview card */}
 				<Card className="gap-0 overflow-hidden py-0">
-					<AspectRatio ratio={16 / 9} className="bg-muted relative">
-						{/* Placeholder visual shown until full livestream page is opened */}
-						<img
-							src="/mr-fresh.jpg"
-							alt="Shelter dog placeholder preview"
-							className="absolute inset-0 h-full w-full object-cover object-center"
-						/>
-						<div
-							aria-hidden
-							className="from-background/75 via-background/20 to-background/10 absolute inset-0 bg-gradient-to-t"
-						/>
-						<div aria-hidden className="absolute inset-0 flex items-center justify-center px-6">
-							<div className="bg-background/90 ring-border flex size-14 items-center justify-center rounded-full ring-1">
-								<PawPrintIcon />
-							</div>
-						</div>
-
-						{/* Live status indicator */}
-						<LiveBadge className="absolute top-4 left-4" />
+					<AspectRatio ratio={16 / 9} className="bg-muted relative overflow-hidden">
+						<LivestreamPlayer alt="Shelter livestream preview" className="h-full w-full" />
 
 						{/* Desktop CTA overlay for stream context and quick action */}
 						<div className="absolute inset-x-0 bottom-0 hidden md:block">

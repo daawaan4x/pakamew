@@ -89,7 +89,7 @@ function DonatePage() {
 				/>
 				<div
 					aria-hidden
-					className="from-background/50 via-background/75 to-background/90 absolute inset-0 bg-gradient-to-b"
+					className="from-background/50 via-background/75 to-background/90 absolute inset-0 bg-linear-to-b"
 				/>
 
 				<div className="bg-background/90 text-primary ring-border relative z-10 mx-auto mb-4 flex size-12 items-center justify-center rounded-full ring-1">
@@ -174,7 +174,7 @@ function DonatePage() {
 				/>
 				<div
 					aria-hidden
-					className="to-card pointer-events-none absolute right-[-1px] bottom-0 hidden h-20 w-0.5 bg-linear-to-b from-transparent md:block"
+					className="to-card pointer-events-none absolute -right-px bottom-0 hidden h-20 w-0.5 bg-linear-to-b from-transparent md:block"
 				/>
 			</section>
 		</main>

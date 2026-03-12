@@ -1,9 +1,9 @@
-import { LiveBadge } from "@/components/live-badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { LivestreamPlayer } from "@/lib/livestream";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2Icon, EyeIcon, HeartHandshakeIcon, SparklesIcon, VideoIcon } from "lucide-react";
+import { CheckCircle2Icon, HeartHandshakeIcon, SparklesIcon, VideoIcon } from "lucide-react";
 
 export const Route = createFileRoute("/donate/success")({
 	component: DonateSuccessPage,
@@ -31,8 +31,6 @@ const IMPACT_POINTS: ImpactPoint[] = [
 	},
 ];
 
-const LIVE_VIEWERS = "128";
-
 function DonateSuccessPage() {
 	return (
 		<main className="mx-auto flex min-h-full w-full max-w-4xl px-4 py-6 sm:px-6 sm:py-8 lg:py-10">
@@ -49,19 +47,7 @@ function DonateSuccessPage() {
 				</header>
 
 				<AspectRatio ratio={16 / 9} className="bg-muted relative overflow-hidden rounded-xl">
-					<img
-						src="/mr-fresh.jpg"
-						alt="Shelter livestream placeholder preview"
-						className="h-full w-full object-cover object-center"
-					/>
-
-					<div className="absolute top-3 left-3 z-10 flex items-center gap-2">
-						<LiveBadge />
-						<div className="bg-background/85 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
-							<EyeIcon className="size-3.5" />
-							<span>{LIVE_VIEWERS}</span>
-						</div>
-					</div>
+					<LivestreamPlayer alt="Shelter livestream preview" className="h-full w-full" />
 				</AspectRatio>
 
 				<section className="px-1 py-6 sm:px-2 sm:py-7">
